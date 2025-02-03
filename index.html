@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Drag & Drop Multiple Images to PDF</title>
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px;
+    }
+
+    /* 드롭 영역 스타일 */
+    #dropzone {
+      width: 80%;
+      height: 200px;
+      border: 2px dashed #ccc;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #999;
+    }
+
+    /* 드래그가 올라왔을 때의 시각적 표현 */
+    #dropzone.dragover {
+      border-color: #666;
+      color: #333;
+    }
+
+    #preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    #preview img {
+      max-width: 150px;
+      max-height: 150px;
+      object-fit: cover;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    #generatePDF {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #4CAF50;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    #generatePDF:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+
+    #reset {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        background-color: #1b8ad9;
+        color: #fff;
+        border-radius: 5px;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+    #reset:disabled {
+        background-color: #999;
+        cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>여러 이미지를 드래그 앤 드롭하여 PDF로 만들기</h1>
+
+  <div id="dropzone">여기에 이미지를 드래그 앤 드롭하세요</div>
+  
+  <!-- 미리보기 영역 -->
+  <div id="preview"></div>
+
+  <!-- PDF 생성 버튼 -->
+  <button id="generatePDF" disabled>PDF로 다운로드</button>
+  <button id="reset" disabled>초기화</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
